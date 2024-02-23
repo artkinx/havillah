@@ -1,5 +1,4 @@
 import 'package:easy_loading_button/easy_loading_button.dart';
-import 'package:fancy_password_field/fancy_password_field.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -26,81 +25,81 @@ class _SignInPageState extends State<SignInPage> {
         child: SizedBox(
           height: MediaQuery.sizeOf(context).height,
           width: MediaQuery.sizeOf(context).width,
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 18.0),
-                    child: Text(
-                      "Login",
-                      style: GoogleFonts.poppinsTextTheme()
-                          .labelSmall!
-                          .copyWith(fontWeight: FontWeight.bold),
-                    ),
-                  ),
-                  Container(
-                    height: 50,
-                    width: 213,
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    decoration: BoxDecoration(
-                        color: AppColor.deepBrownColor,
-                        borderRadius: const BorderRadius.only(
-                            topLeft: Radius.circular(20),
-                            bottomLeft: Radius.circular(20))),
-                    child: SizedBox(
-                      width: 213,
-                      height: 50,
-                      child: DropdownButtonFormField(
-                        alignment: AlignmentDirectional.center,
-                        dropdownColor: AppColor.deepBrownColor,
+          child: SingleChildScrollView(
+            child: Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(left: 18.0),
+                      child: Text(
+                        "Login",
                         style: GoogleFonts.poppinsTextTheme()
-                            .labelMedium!
-                            .copyWith(
-                              color: AppColor.secondaryColor,
-                            ),
-                        onChanged: (value) {},
-                        icon: const Icon(Icons.keyboard_arrow_down_outlined),
-                        iconEnabledColor: AppColor.secondaryColor,
-                        elevation: 0,
-                        decoration: InputDecoration(
-                            suffixIconColor: AppColor.secondaryColor,
-                            prefixIconColor: AppColor.secondaryColor,
-                            border: const UnderlineInputBorder(
-                              borderSide: BorderSide.none,
-                            )),
-                        items: const [
-                          DropdownMenuItem(
-                              value: "NeedProperty",
-                              child: Text("I need a property")),
-                          DropdownMenuItem(
-                              value: "HaveProperty",
-                              child: Text("I have a property")),
-                        ],
+                            .labelSmall!
+                            .copyWith(fontWeight: FontWeight.bold),
                       ),
                     ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 160,
-              ),
-              Text(
-                "Welcome back",
-                style: GoogleFonts.poppinsTextTheme().headlineLarge!.copyWith(
-                      color: AppColor.brownShade1,
-                      fontSize: 19,
-                      fontWeight: FontWeight.w700,
-                    ),
-              ),
-              const SizedBox(
-                height: 50,
-              ),
-              Expanded(
-                child: ReactiveForm(
+                    Container(
+                      height: 50,
+                      width: 213,
+                      padding: const EdgeInsets.symmetric(horizontal: 10),
+                      decoration: BoxDecoration(
+                          color: AppColor.deepBrownColor,
+                          borderRadius: const BorderRadius.only(
+                              topLeft: Radius.circular(20),
+                              bottomLeft: Radius.circular(20))),
+                      child: SizedBox(
+                        width: 213,
+                        height: 50,
+                        child: DropdownButtonFormField(
+                          alignment: AlignmentDirectional.center,
+                          dropdownColor: AppColor.deepBrownColor,
+                          style: GoogleFonts.poppinsTextTheme()
+                              .labelMedium!
+                              .copyWith(
+                                color: AppColor.secondaryColor,
+                              ),
+                          onChanged: (value) {},
+                          icon: const Icon(Icons.keyboard_arrow_down_outlined),
+                          iconEnabledColor: AppColor.secondaryColor,
+                          elevation: 0,
+                          decoration: InputDecoration(
+                              suffixIconColor: AppColor.secondaryColor,
+                              prefixIconColor: AppColor.secondaryColor,
+                              border: const UnderlineInputBorder(
+                                borderSide: BorderSide.none,
+                              )),
+                          items: const [
+                            DropdownMenuItem(
+                                value: "NeedProperty",
+                                child: Text("I need a property")),
+                            DropdownMenuItem(
+                                value: "HaveProperty",
+                                child: Text("I have a property")),
+                          ],
+                        ),
+                      ),
+                    )
+                  ],
+                ),
+                SizedBox(
+                  height: MediaQuery.of(context).size.height / 4,
+                ),
+                Text(
+                  "Welcome back",
+                  style: GoogleFonts.poppinsTextTheme().headlineLarge!.copyWith(
+                        color: AppColor.brownShade1,
+                        fontSize: 19,
+                        fontWeight: FontWeight.w700,
+                      ),
+                ),
+                const SizedBox(
+                  height: 50,
+                ),
+                ReactiveForm(
                   formGroup: ReactiveForms.form,
-                  child: Stack(
+                  child: Column(
                     children: [
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 18.0),
@@ -168,13 +167,13 @@ class _SignInPageState extends State<SignInPage> {
                                   ),
                                 );
                               },
-                              validationRules: {
-                                DigitValidationRule(),
-                                UppercaseValidationRule(),
-                                LowercaseValidationRule(),
-                                MinCharactersValidationRule(6),
-                                MaxCharactersValidationRule(12),
-                              },
+                              // validationRules: {
+                              //   DigitValidationRule(),
+                              //   UppercaseValidationRule(),
+                              //   LowercaseValidationRule(),
+                              //   MinCharactersValidationRule(6),
+                              //   MaxCharactersValidationRule(12),
+                              // },
                               decoration: const InputDecoration(
                                 border: OutlineInputBorder(),
                                 hintText: "Enter you password",
@@ -183,47 +182,46 @@ class _SignInPageState extends State<SignInPage> {
                           ],
                         ),
                       ),
-                      Align(
-                          alignment: AlignmentDirectional.bottomCenter,
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.fromLTRB(18.0, 0, 18.0, 30),
-                            child: ReactiveFormConsumer(
-                              builder: (conxt, f, child) => EasyButton(
-                                idleStateWidget: const Text(
-                                  'Elevated button',
-                                  style: TextStyle(
-                                    color: Colors.white,
-                                  ),
-                                ),
-                                borderRadius: 20,
-                                height: 60,
-                                elevation: 3,
-                                onPressed: f.hasErrors
-                                    ? null
-                                    : () async {
-                                        await context
-                                            .read<SignInCubit>()
-                                            .signin(f.rawValue, context);
-                                      },
-                                buttonColor: f.hasErrors
-                                    ? Colors.grey
-                                    : AppColor.deepBrownColor,
-                                loadingStateWidget:
-                                    const CircularProgressIndicator(
-                                  strokeWidth: 3.0,
-                                  valueColor: AlwaysStoppedAnimation<Color>(
-                                    Colors.white,
-                                  ),
-                                ),
+                      SizedBox(
+                        height: MediaQuery.sizeOf(context).height / 8,
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.fromLTRB(18.0, 0, 18.0, 30),
+                        child: ReactiveFormConsumer(
+                          builder: (conxt, f, child) => EasyButton(
+                            idleStateWidget: const Text(
+                              'Elevated button',
+                              style: TextStyle(
+                                color: Colors.white,
                               ),
                             ),
-                          ))
+                            borderRadius: 20,
+                            height: 60,
+                            elevation: 3,
+                            onPressed: f.hasErrors
+                                ? null
+                                : () async {
+                                    await context
+                                        .read<SignInCubit>()
+                                        .signin(f.rawValue, context);
+                                  },
+                            buttonColor: f.hasErrors
+                                ? Colors.grey
+                                : AppColor.deepBrownColor,
+                            loadingStateWidget: const CircularProgressIndicator(
+                              strokeWidth: 3.0,
+                              valueColor: AlwaysStoppedAnimation<Color>(
+                                Colors.white,
+                              ),
+                            ),
+                          ),
+                        ),
+                      )
                     ],
                   ),
                 ),
-              ),
-            ],
+              ],
+            ),
           ),
         ),
       ),
